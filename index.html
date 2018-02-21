@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NEVER</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    #wrap {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: url('http://www.geeklife.pl/wp-content/uploads/2017/03/LBM-TeaserSite-Tout-WB.jpg');
+      background-size: cover;
+      background-position: center center;
+    }
+
+    #wrap:before {
+      content: '';
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #result, .quote {
+      font-family: Fixedsys, system, 'Share Tech Mono', monospace;
+      font-size: 10rem;
+      /*letter-spacing: 1rem;*/
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    #result {
+      cursor: pointer;
+    }
+
+    .quote {
+      font-size: 2rem;
+      letter-spacing: unset;
+    }
+
+    .search {
+      color: green;
+    }
+
+    .search--end {
+      color: red;
+      animation: 0.1s blink linear;
+      animation-iteration-count: 2;
+    }
+
+    @keyframes blink {
+      0% {
+        background-color: red;
+        color: #fff;
+      }
+      100% {
+        background-color: transparent;
+        color: red;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="wrap">
+    <div class="box">
+      <p class="quote">
+          When has that ever happened? Puter!
+      </p>
+      <p id="result" class="search">[run]</p>
+    </div>
+  </div>
+  <script>
+    var result = document.getElementById('result');
+
+    function never() {
+      result.classList.remove('search--end');
+      var si = setInterval(function () {
+        result.innerHTML = Math.floor(Math.random() * 90000) + 10000;
+      }, 80);
+      setTimeout(function () {
+        clearInterval(si);
+        result.classList.add('search--end');
+        result.innerHTML = "never";
+      }, 1000);
+    };
+
+    result.addEventListener('click', never,false);
+  </script>
+</body>
+
+</html>
